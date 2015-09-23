@@ -1,6 +1,6 @@
 {
   "name": "react-router-limiter",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Use to limite url with your config whatever from, like a controller",
   "main": "index.js",
   "scripts": {
