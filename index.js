@@ -144,19 +144,17 @@
         /**
          * @desc 初始化需要路由限制条件
          * @param list     {Array} 必传，需要把路由白名单过滤出来的路由数据结构
-         * @param config   [Object|Array] 可选，特殊情况处理的数据结构
+         * @param config   [Object|Array] 必传，特殊情况处理的数据结构
          * @param callback [Function] 可选，回调函数中的`list`参数为取到的路由白名单
          * @private
          */
         init: function (list, config, callback) {
-            var typeofConfig = typeof config;
-            if (typeofConfig === 'object') {
-                // 初始化对应的数据
-                this._initData(config);
-            } else if (typeofConfig === 'function') {
-                // 因为第二三个参数为可选，所以这么处理
-                callback = config;
+            if (typeof config !== 'object') {
+                throw new Error('config should be Objective');
             }
+
+            // 初始化对应的数据
+            this._initData(config);
 
             // 遍历数据，生成白名单
             // TODO: 如果数据结构过于复杂，会产生性能问题, 可以写个算法优化
